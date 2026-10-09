@@ -1,0 +1,55 @@
+name: test
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  core:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        target: [erlang, javascript]
+    defaults:
+      run:
+        working-directory: core
+    steps:
+      - uses: actions/checkout@v7
+      - uses: erlef/setup-beam@v1
+        with:
+          otp-version: "29"
+          gleam-version: "1.19.0"
+          rebar3-version: "3"
+      - uses: actions/setup-node@v7
+        if: matrix.target == 'javascript'
+        with:
+          node-version: "26"
+      - run: gleam deps download
+      - run: gleam test --target ${{ matrix.target }}
+      - run: gleam format --check src test
+
+  erlang:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: erlang
+    steps:
+      - uses: actions/checkout@v7
+      - uses: erlef/setup-beam@v1
+        with:
+          otp-version: "29"
+          gleam-version: "1.19.0"
+          rebar3-version: "3"
+      - name: Install nats-server
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release download v2.15.0 --repo nats-io/nats-server \
+            --pattern 'nats-server-v2.15.0-linux-amd64.tar.gz' --dir "$RUNNER_TEMP"
+          tar -xzf "$RUNNER_TEMP/nats-server-v2.15.0-linux-amd64.tar.gz" -C "$RUNNER_TEMP"
+          echo "$RUNNER_TEMP/nats-server-v2.15.0-linux-amd64" >> "$GITHUB_PATH"
+      - run: gleam deps download
+      - run: gleam test
+      - run: gleam format --check src test

@@ -1,0 +1,23 @@
+name = "jetgleam"
+version = "1.0.0"
+
+# Fill out these fields if you intend to generate HTML documentation or publish
+# your project to the Hex package manager.
+#
+description = "NATS and JetStream for Gleam: messages, and JetStream and key/value operations as data"
+# licences = ["Apache-2.0"]
+# repository = { type = "github", user = "", repo = "" }
+# links = [{ title = "Website", href = "" }]
+#
+# For a full reference of all the available options, you can have a look at
+# https://gleam.run/writing-gleam/gleam-toml/.
+
+[dependencies]
+gleam_json = ">= 3.1.0 and < 4.0.0"
+gleam_stdlib = ">= 1.0.0 and < 2.0.0"
+gleam_time = ">= 1.11.0 and < 2.0.0"
+thirtytwo = ">= 1.0.0 and < 2.0.0"
+
+[dev_dependencies]
+qcheck = ">= 1.0.5 and < 2.0.0"
+unitest = ">= 1.6.1 and < 2.0.0"

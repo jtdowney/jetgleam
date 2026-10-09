@@ -1,0 +1,13 @@
+-----BEGIN NATS USER JWT-----
+eyJ0eXAiOiAiSldUIiwgImFsZyI6ICJlZDI1NTE5LW5rZXkifQ.eyJpYXQiOiAxNzAwMDAwMDAwLCAiaXNzIjogIkFBVTJaT1hCSUc2TVY0RlNGWU5KSlUyTkJQRFRNSFNTTlVGNzRFV0lTNktMWkVaQ1NaVzVPSUNUIiwgIm5hbWUiOiAidXNlciIsICJzdWIiOiAiVURYVTRSQ1NKTlpPSVFIWk5XWEhYT1JEUFJUR05KQUhBSEZSR1pORUVKQ1BRVFQyTTdOTENORjQiLCAibmF0cyI6IHsicHViIjoge30sICJzdWIiOiB7fSwgInN1YnMiOiAtMSwgImRhdGEiOiAtMSwgInBheWxvYWQiOiAtMSwgInR5cGUiOiAidXNlciIsICJ2ZXJzaW9uIjogMn0sICJqdGkiOiAiM0syNUVXNlRJWEhaTEdJVzVUVzRHVExXTUdEUUROQURQNEVGV0lQSUZWVENSUVhGSlRLUSJ9.jyic28yEEgeblwtOhUllxCuH6zPnAaTTjdRTzVS1E9b_BPHvt-hVfvPyje-YKwk8SlUDpOgqF9u4NQh3tj_nDg
+------END NATS USER JWT------
+
+************************* IMPORTANT *************************
+NKEY Seed printed below can be used to sign and prove identity.
+NKEYs are sensitive and should be treated as secrets.
+
+-----BEGIN USER NKEY SEED-----
+SUACSSL3UAHUDXKFSNVUZRF5UHPMWZ6BFDTJ7M6USDXIEDNPPQYYYCU3VY
+------END USER NKEY SEED------
+
+*************************************************************
