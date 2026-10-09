@@ -549,10 +549,10 @@ fn validate(config: protocol.Config) -> Result(Nil, Error) {
 
 const write_timeout = 1000
 
-@external(erlang, "jetgleam_erlang_ffi", "set_write_timeout")
-fn set_write_timeout(
+@external(erlang, "jetgleam_erlang_ffi", "set_socket_options")
+fn set_socket_options(
   socket: mug.Socket,
-  milliseconds: Int,
+  write_timeout: Int,
 ) -> Result(Nil, mug.Error)
 
 @external(erlang, "gen_tcp", "controlling_process")
@@ -731,7 +731,7 @@ fn step(state: State, message: Command) -> State {
           |> result.map_error(describe_connect_error)
           |> result.try(fn(socket) {
             use Nil <- result.try(
-              set_write_timeout(socket, write_timeout)
+              set_socket_options(socket, write_timeout)
               |> result.map_error(mug.describe_error),
             )
             case controlling_process(socket, owner) == atom.create("ok") {
